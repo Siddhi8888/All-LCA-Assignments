@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+struct Robot
+{
+    float depth;
+    float pressure;
+    float temperature;
+    float battery;
+    int defects;
+};
+
+int main()
+{
+    struct Robot r[100];
+    int n, i;
+
+    printf("underwater robot monitoring system\n");
+    printf("enter number of records:");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++)
+    {
+        printf("\n enter details for record %d\n", i + 1);
+        printf("enter depth (m):");
+        scanf("%f", &r[i].depth);
+
+        printf("enter water pressure (bar):");
+        scanf("%f", &r[i].pressure);
+
+        printf("enter temperature (c):");
+        scanf("%f", &r[i].temperature);
+
+        printf("enter battery percentage:");
+        scanf("%f", &r[i].battery);
+
+        printf("structural defects (1 = yes, 0 = no):");
+        scanf("%d", &r[i].defects);
+    }
+        printf("\n---robot report---\n");
+
+        for(i = 0; i < n; i++)
+        {
+            printf("\nrecord %d\n", i + 1);
+
+            printf("depth: %.2f m\n", r[i].depth);
+            printf("pressure: %.2f bar\n", r[i].pressure);
+            printf("temperature: %.2f c\n", r[i].temperature);
+            printf("battery: %.2f%%\n", r[i].battery);
+
+            if(r[i].defects == 1)
+            printf("structural defects: detected\n");
+            else
+            printf("structura; defects: not detected\n");
+
+            if(r[i].depth > 100 || 
+               r[i].pressure > 11 ||
+               r[i].temperature > 40 ||
+               r[i].battery < 20 ||
+               r[i].defects == 1)
+        {
+            printf("status: unsafe condition\n");
+        }
+        else
+        {
+            printf("status: safe condition\n");
+        }
+    }
+    return 0;
+}
